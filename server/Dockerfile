@@ -1,0 +1,17 @@
+FROM node:16-alpine
+USER mode
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
+COPY --chown=node:node ./package.json ./
+RUN npm install
+COPY --chown=node:node ./ ./
+CMD ["npm", "run", "start"]
+
+
+
+# FROM node:16-alpine
+# WORKDIR "/app"
+# COPY ./package.json ./
+# RUN npm install
+# COPY . .
+# CMD ["npm", "run", "start"]
